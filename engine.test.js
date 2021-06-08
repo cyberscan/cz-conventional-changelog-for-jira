@@ -14,7 +14,7 @@ var defaultOptions = defaults;
 
 var type = 'func';
 var scope = 'everything';
-var jira = 'DAZ-123';
+var jira = 'ITCORE-123';
 var subject = 'testing123';
 const shortBody = 'a';
 var longBody =
@@ -447,11 +447,11 @@ describe('commitlint config header-max-length', function() {
 
 describe('questions', function() {
   it('default jira question', function() {
-    expect(questionPrompt('jira')).to.be.eq('Enter JIRA issue (DAZ-12345):');
+    expect(questionPrompt('jira')).to.be.eq('Enter JIRA issue (ITCORE-12345):');
   });
   it('optional jira question', function() {
     expect(questionPrompt('jira', [], { jiraOptional: true })).to.be.eq(
-      'Enter JIRA issue (DAZ-12345) (optional):'
+      'Enter JIRA issue (ITCORE-12345) (optional):'
     );
   });
   it('scope with list', function() {
