@@ -57,7 +57,7 @@ Like commitizen, you can specify the configuration of cz-conventional-changelog-
 | CZ_BODY              | defaultBody    | undefined | A default body.                                                                                                                                                       |
 | CZ_ISSUES            | defaultIssues  | undefined | A default issue.                                                                                                                                                      |
 | CZ_JIRA_OPTIONAL     | jiraOptional   | false     | If this is set to true, you can leave the JIRA field blank.                                                                                                           |
-| CZ_JIRA_PREFIX       | jiraPrefix     | "DAZ"     | If this is set it will be will be displayed as the default JIRA ticket prefix                                                                                         |
+| CZ_JIRA_PREFIX       | jiraPrefix     | "ITCORE"     | If this is set it will be will be displayed as the default JIRA ticket prefix                                                                                         |
 
 ## Dynamic Configuration
 
@@ -110,7 +110,7 @@ List of all supported configurable options when using the _configurable_ approac
 | defaultSubject | undefined | A default subject.                                                                                                                                                    |
 | defaultBody    | undefined | A default body.                                                                                                                                                       |
 | defaultIssues  | undefined | A default issue.                                                                                                                                                      |
-| jiraPrefix     | 'DAZ'     | The default JIRA ticket prefix that will be displayed.                                                                                                                |
+| jiraPrefix     | 'ITCORE'     | The default JIRA ticket prefix that will be displayed.                                                                                                                |
 | types          | ./types.js| A list (JS Object) of supported commit types.                                                                                                                         |
 | scopes         | undefined | A list (JS Array) of scopes that will be available for selection. Note that adding this will change the scope field from Inquirer 'input' to 'list'.                  |
 | jiraOptional   | false     | If this is set to true, you can leave the JIRA field blank.                                                                                                           |
