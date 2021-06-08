@@ -1,41 +1,49 @@
 module.exports = {
-  feat: {
-    description: 'A new feature',
-    title: 'Features'
+  FEAT: {
+    description: "A new feature",
+    title: "Features",
   },
-  fix: {
-    description: 'A bug fix',
-    title: 'Bug Fixes'
+  FIX: {
+      description: "A bug fix",
+      title: "Bug Fixes",
   },
-  docs: {
-    description: 'Documentation only changes',
-    title: 'Documentation'
+  DOCS: {
+      description: "Documentation only changes",
+      title: "Documentation",
   },
-  refactor: {
-    description:
-      'A code change that neither fixes a bug nor adds a feature (formatting, performance improvement, etc)',
-    title: 'Code Refactoring'
+  REFACTOR: {
+      description:
+          "A code change that neither fixes a bug nor adds a feature",
+      title: "Code Refactoring",
   },
-  test: {
-    description: 'Adding missing tests or correcting existing tests',
-    title: 'Tests'
+  TEST: {
+      description: "Adding missing tests or correcting existing tests",
+      title: "Tests",
   },
-  build: {
-    description:
-      'Changes that affect the build system or external dependencies (npm, webpack, typescript)',
-    title: 'Builds'
+  STYLE: {
+      description:
+          "Formatting changes that do not affect the meaning of the code",
+      title: "Style Conventions",
   },
-  ci: {
-    description:
-      'Changes to our CI configuration files and scripts (NOTE: Does not bump the version)',
-    title: 'Continuous Integrations'
+  BUILD: {
+      description:
+          "Changes that affect the build system or external dependencies",
+      title: "Builds",
   },
-  chore: {
-    description: "Other changes that don't modify src or test files",
-    title: 'Chores'
+  CI: {
+      description: "Changes to our CI configuration files and scripts",
+      title: "Continuous Integrations",
   },
-  revert: {
-    description: 'Reverts a previous commit',
-    title: 'Reverts'
-  }
+  CHORE: {
+      description: "Other changes that don't modify src or test files",
+      title: "Chores",
+  },
+  REVERT: {
+      description: "Reverts a previous commit",
+      title: "Reverts",
+  },
+  PERF: {
+      description: "A code change that improves performance",
+      title: "Performance Improvements",
+  },
 };

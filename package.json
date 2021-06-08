@@ -9,10 +9,10 @@
     "format": "prettier --write *.js",
     "semantic-release": "semantic-release"
   },
-  "homepage": "https://github.com/digitalroute/cz-conventional-changelog-for-jira",
+  "homepage": "https://github.com/cyberscan/cz-conventional-changelog-for-jira",
   "repository": {
     "type": "git",
-    "url": "https://github.com/digitalroute/cz-conventional-changelog-for-jira.git"
+    "url": "https://github.com/cyberscan/cz-conventional-changelog-for-jira.git"
   },
   "engineStrict": true,
   "engines": {
