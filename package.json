@@ -2,7 +2,6 @@
   "name": "@dgc-org/cz-conventional-changelog-for-jira",
   "version": "0.0.0-semantically-released",
   "description": "Commitizen adapter following the conventional-changelog format and also asking for JIRA issue.",
-  "private": true,
   "main": "index.js",
   "scripts": {
     "commit": "git-cz",
@@ -54,7 +53,7 @@
     }
   },
   "publishConfig": {
-    "access": "restricted",
+    "access": "public",
     "scope": "@dgc-org"
   }
 }
