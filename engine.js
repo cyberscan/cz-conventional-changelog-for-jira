@@ -157,7 +157,8 @@ module.exports = function(options) {
         {
           type: 'confirm',
           name: 'isBreaking',
-          message: 'You do know that this will bump the major version, are you sure?',
+          message:
+            'You do know that this will bump the major version, are you sure?',
           default: false,
           when: function(answers) {
             return answers.isBreaking;

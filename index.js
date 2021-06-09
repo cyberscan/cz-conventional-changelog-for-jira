@@ -55,9 +55,7 @@ const options = {
     defaults.jiraOptional
   ),
   jiraPrefix:
-    process.env.CZ_JIRA_PREFIX ||
-    config.jiraPrefix ||
-    defaults.jiraPrefix
+    process.env.CZ_JIRA_PREFIX || config.jiraPrefix || defaults.jiraPrefix
 };
 
 (function(options) {
