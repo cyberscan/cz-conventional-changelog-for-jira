@@ -25,7 +25,7 @@ and then add the following to package.json:
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/@dgc-org//cz-conventional-changelog-for-jira"
+      "path": "./node_modules/@dgc-org/cz-conventional-changelog-for-jira"
     }
   }
 }
@@ -57,9 +57,9 @@ Alternatively, if you want to create your own profile, you can use the _configur
 Here is an example:
 **./index.js**
 ```javascript
-const custom = require('@dgc-org//cz-conventional-changelog-for-jira/configurable');
+const custom = require('@dgc-org/cz-conventional-changelog-for-jira/configurable');
 // You can do this optionally if you want to extend the commit types
-const defaultTypes = require('@dgc-org//cz-conventional-changelog-for-jira/types');
+const defaultTypes = require('@dgc-org/cz-conventional-changelog-for-jira/types');
 
 module.exports = custom({
   types: {

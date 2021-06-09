@@ -14,10 +14,12 @@
     "type": "git",
     "url": "https://github.com/cyberscan/cz-conventional-changelog-for-jira.git"
   },
-  "engineStrict": true,
-  "engines": {
-    "node": ">= 10"
-  },
+  "keywords": [
+    "conventional-changelog",
+    "commitizen",
+    "angular",
+    "jira"
+  ],
   "author": "Marcus Johansson <polarn@gmail.com>",
   "license": "MIT",
   "dependencies": {
