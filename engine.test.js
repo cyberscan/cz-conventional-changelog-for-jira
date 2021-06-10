@@ -11,8 +11,8 @@ chai.should();
 var defaultOptions = defaults;
 
 var type = 'func';
-var scope = 'everything';
-var jira = 'ITCORE-123';
+var scope = 'EVERYTHING';
+var jira = '[ITCORE-123]';
 var subject = 'testing123';
 const shortBody = 'a';
 var longBody =
@@ -106,7 +106,9 @@ describe('commit message', function() {
         body,
         issues
       })
-    ).to.equal(`${type}(${scope}): [${jira}] ${subject}\n\n${body}\n\n${issues}`);
+    ).to.equal(
+      `${type}(${scope}): [${jira}] ${subject}\n\n${body}\n\n${issues}`
+    );
   });
   it('header, body and long issues w/ out scope', function() {
     expect(
@@ -117,7 +119,9 @@ describe('commit message', function() {
         body,
         issues: longIssues
       })
-    ).to.equal(`${type}: [${jira}] ${subject}\n\n${body}\n\n${longIssuesSplit}`);
+    ).to.equal(
+      `${type}: [${jira}] ${subject}\n\n${body}\n\n${longIssuesSplit}`
+    );
   });
   it('header, body and long issues w/ scope', function() {
     expect(
@@ -163,7 +167,9 @@ describe('commit message', function() {
         body: longBody,
         issues
       })
-    ).to.equal(`${type}: [${jira}] ${subject}\n\n${longBodySplit}\n\n${issues}`);
+    ).to.equal(
+      `${type}: [${jira}] ${subject}\n\n${longBodySplit}\n\n${issues}`
+    );
   });
   it('header, long body and issues w/ scope', function() {
     expect(
@@ -340,7 +346,7 @@ describe('defaults', function() {
 
 describe('filter', function() {
   it('lowercase scope', () =>
-    expect(questionFilter('scope', 'HelloMatt')).to.equal('hellomatt'));
+    expect(questionFilter('scope', 'HelloMatt')).to.equal('HELLOMATT'));
 });
 
 describe('when', function() {
@@ -445,7 +451,9 @@ describe('commitlint config header-max-length', function() {
 
 describe('questions', function() {
   it('default jira question', function() {
-    expect(questionPrompt('jira')).to.be.eq('Enter JIRA issue ([ITCORE-12345]):');
+    expect(questionPrompt('jira')).to.be.eq(
+      'Enter JIRA issue ([ITCORE-12345]):'
+    );
   });
   it('optional jira question', function() {
     expect(questionPrompt('jira', [], { jiraOptional: true })).to.be.eq(
@@ -456,12 +464,12 @@ describe('questions', function() {
     expect(
       questionPrompt('scope', [], { scopes: ['scope1', 'scope2'] })
     ).to.be.eq(
-      'What is the scope of this change (e.g. component or file name): (select from the list)'
+      'What is the scope of this change:'
     );
   });
   it('scope without list', function() {
     expect(questionPrompt('scope')).to.be.eq(
-      'What is the scope of this change (e.g. component or file name): (press enter to skip)'
+      'What is the scope of this change:'
     );
   });
 });

@@ -77,7 +77,7 @@ const options = {
         }
       }
     });
-  } catch (err) {};
+  } catch (err) {}
 })(options);
 
 module.exports = engine(options);

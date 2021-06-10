@@ -42,7 +42,7 @@ module.exports = function(options) {
   var choices = map(types, function(type, key) {
     return {
       name: `${rightPad(`${key}:`, length)} ${type.description}`,
-      value: key,
+      value: key
     };
   });
 
@@ -56,46 +56,50 @@ module.exports = function(options) {
     matchResult && matchResult.groups && matchResult.groups.jiraIssue;
 
   const searchScopes = (previousAnswers, searchInput) => {
-    return new Promise((resolve) => {
-
+    return new Promise(resolve => {
       // Are any scopes present already? (from config or from previous fn call)
       if (!options.scopes) {
-
         // No, do we have credentials to grab Jira labels as scopes?
         if (options.jiraHost && options.jiraUser && options.jiraToken) {
-
           // Init Jira API wrapper
           const jira = new jiraApi({
-            protocol: "https",
+            protocol: 'https',
             host: options.jiraHost,
             username: options.jiraUser,
             password: options.jiraToken
           });
 
           // Get labels
-          jira.genericGet("label").then((res) => {
-            if (Array.isArray(res.values) && res.values.length > 0) {
-              options.scopes = res.values;
-            } else {
-              throw new Error("Failed to fetch labels from Jira");
-            }
-          }).catch((err) => {
-            console.warn(err);
-            options.scopes = [];
-          }).finally(() => {
-            resolve(options.scopes);
-          });
-
+          jira
+            .genericGet('label')
+            .then(res => {
+              if (Array.isArray(res.values) && res.values.length > 0) {
+                options.scopes = res.values;
+              } else {
+                throw new Error('Failed to fetch labels from Jira');
+              }
+            })
+            .catch(err => {
+              console.warn(err);
+              options.scopes = [];
+            })
+            .finally(() => {
+              resolve(options.scopes);
+            });
         } else {
           // No credentials, resolve to.. nothing?
           resolve([]);
         }
       } else {
         // Scopes already present, return the filtered version of them
-        resolve(fuzzy.filter(searchInput || '', options.scopes).map((scope) => scope.original));
+        resolve(
+          fuzzy
+            .filter(searchInput || '', options.scopes)
+            .map(scope => scope.original)
+        );
       }
     });
-  }
+  };
 
   return {
     // When a user runs `git cz`, prompter will
@@ -154,7 +158,7 @@ module.exports = function(options) {
           name: 'scope',
           when: !options.skipScope,
           source: searchScopes,
-          message: 'What is the scope of this change (e.g. component or file name): (select from the list)',
+          message: 'What is the scope of this change:',
           default: options.defaultScope,
           filter: function(value) {
             return value.trim().toUpperCase();
