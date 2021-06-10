@@ -50,7 +50,7 @@
   "config": {
     "commitizen": {
       "path": "./index.js",
-      "jiraMode": false,
+      "jiraMode": true,
       "skipScope": true
     }
   },

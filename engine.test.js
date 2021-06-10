@@ -1,11 +1,9 @@
-var chai = require('chai');
-var chalk = require('chalk');
-var engine = require('./engine');
-var mock = require('mock-require');
-var semver = require('semver');
-
-var types = require('./commit-types');
-var defaults = require('./defaults');
+const chai = require('chai');
+const engine = require('./engine');
+const mock = require('mock-require');
+const semver = require('semver');
+const types = require('./commit-types');
+const defaults = require('./defaults');
 
 var expect = chai.expect;
 chai.should();

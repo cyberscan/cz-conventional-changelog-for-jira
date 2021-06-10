@@ -36,8 +36,8 @@ module.exports = function(options) {
   var length = longest(Object.keys(types)).length + 1;
   var choices = map(types, function(type, key) {
     return {
-      name: rightPad(key + ':', length) + ' ' + type.description,
-      value: key
+      name: `${rightPad(`${key}:`, length)} ${type.description}`,
+      value: key,
     };
   });
 
@@ -45,7 +45,7 @@ module.exports = function(options) {
   const maxHeaderWidth = getFromOptionsOrDefaults('maxHeaderWidth');
 
   const branchName = branch.sync() || '';
-  const jiraIssueRegex = /(?<jiraIssue>(?<!([A-Z0-9]{1,10})-?)[A-Z0-9]+-\d+)/;
+  const jiraIssueRegex = /\[(?<jiraIssue>(?<!([A-Z0-9]{1,10})-?)[A-Z0-9]+-\d+\])/;
   const matchResult = branchName.match(jiraIssueRegex);
   const jiraIssue =
     matchResult && matchResult.groups && matchResult.groups.jiraIssue;
@@ -88,9 +88,9 @@ module.exports = function(options) {
           type: 'input',
           name: 'jira',
           message:
-            'Enter JIRA issue (' +
+            'Enter JIRA issue ([' +
             getFromOptionsOrDefaults('jiraPrefix') +
-            '-12345)' +
+            '-12345])' +
             (options.jiraOptional ? ' (optional)' : '') +
             ':',
           when: options.jiraMode,
@@ -98,11 +98,11 @@ module.exports = function(options) {
           validate: function(jira) {
             return (
               (options.jiraOptional && !jira) ||
-              /^(?<!([A-Z0-9]{1,10})-?)[A-Z0-9]+-\d+$/.test(jira)
+              /^\[(?<!([A-Z0-9]{1,10})-?)[A-Z0-9]+-\d+\]$/.test(jira)
             );
           },
           filter: function(jira) {
-            return jira.toUpperCase();
+            return `[${jira.toUpperCase()}]`;
           }
         },
         {
