@@ -59,7 +59,7 @@ Here is an example:
 ```javascript
 const custom = require('@dgc-org/cz-conventional-changelog-for-jira/configurable');
 // You can do this optionally if you want to extend the commit types
-const defaultTypes = require('@dgc-org/cz-conventional-changelog-for-jira/types');
+const defaultTypes = require('@dgc-org/cz-conventional-changelog-for-jira/commit-types');
 
 module.exports = custom({
   types: {
@@ -103,7 +103,7 @@ List of all supported configurable options when using the _configurable_ approac
 | defaultBody    | undefined | A default body.                                                                                                                                                       |
 | defaultIssues  | undefined | A default issue.                                                                                                                                                      |
 | jiraPrefix     | 'ITCORE'     | The default JIRA ticket prefix that will be displayed.                                                                                                                |
-| types          | ./types.js| A list (JS Object) of supported commit types.                                                                                                                         |
+| types          | ./commit-types.js | A list (JS Object) of supported commit types.                                                                                                                         |
 | scopes         | undefined | A list (JS Array) of scopes that will be available for selection. Note that adding this will change the scope field from Inquirer 'input' to 'list'.                  |
 | jiraOptional   | false     | If this is set to true, you can leave the JIRA field blank.                                                                                                           |
 

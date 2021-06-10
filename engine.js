@@ -1,14 +1,14 @@
 'format cjs';
 
-var wrap = require('word-wrap');
-var map = require('lodash.map');
-var longest = require('longest');
-var rightPad = require('right-pad');
-var chalk = require('chalk');
+const wrap = require('word-wrap');
+const map = require('lodash.map');
+const longest = require('longest');
+const rightPad = require('right-pad');
+const chalk = require('chalk');
 const branch = require('git-branch');
 const boxen = require('boxen');
 
-var defaults = require('./defaults');
+const defaults = require('./defaults');
 const LimitedInputPrompt = require('./LimitedInputPrompt');
 var filter = function(array) {
   return array.filter(function(x) {

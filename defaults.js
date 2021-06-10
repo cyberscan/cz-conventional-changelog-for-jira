@@ -1,4 +1,4 @@
-var conventionalCommitTypes = require('./types');
+const conventionalCommitTypes = require('./commit-types');
 
 module.exports = {
   types: conventionalCommitTypes,

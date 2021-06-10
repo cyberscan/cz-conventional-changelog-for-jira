@@ -4,7 +4,7 @@ var engine = require('./engine');
 var mock = require('mock-require');
 var semver = require('semver');
 
-var types = require('./types');
+var types = require('./commit-types');
 var defaults = require('./defaults');
 
 var expect = chai.expect;
