@@ -9,7 +9,12 @@ const branch = require('git-branch');
 const boxen = require('boxen');
 
 const defaults = require('./defaults');
+
 const LimitedInputPrompt = require('./LimitedInputPrompt');
+const autocomplete = require('inquirer-autocomplete-prompt');
+const jiraApi = require('jira-client');
+const fuzzy = require('fuzzy');
+
 var filter = function(array) {
   return array.filter(function(x) {
     return x;
@@ -45,14 +50,52 @@ module.exports = function(options) {
   const maxHeaderWidth = getFromOptionsOrDefaults('maxHeaderWidth');
 
   const branchName = branch.sync() || '';
-  const jiraIssueRegex = /\[(?<jiraIssue>(?<!([A-Z0-9]{1,10})-?)[A-Z0-9]+-\d+\])/;
+  const jiraIssueRegex = /\[(?<jiraIssue>(?<!([A-Z0-9]{1,10})-?)[A-Z0-9]+-\d+)\]/;
   const matchResult = branchName.match(jiraIssueRegex);
   const jiraIssue =
     matchResult && matchResult.groups && matchResult.groups.jiraIssue;
-  const hasScopes =
-    options.scopes &&
-    Array.isArray(options.scopes) &&
-    options.scopes.length > 0;
+
+  const searchScopes = (previousAnswers, searchInput) => {
+    return new Promise((resolve) => {
+
+      // Are any scopes present already? (from config or from previous fn call)
+      if (!options.scopes) {
+
+        // No, do we have credentials to grab Jira labels as scopes?
+        if (options.jiraHost && options.jiraUser && options.jiraToken) {
+
+          // Init Jira API wrapper
+          const jira = new jiraApi({
+            protocol: "https",
+            host: options.jiraHost,
+            username: options.jiraUser,
+            password: options.jiraToken
+          });
+
+          // Get labels
+          jira.genericGet("label").then((res) => {
+            if (Array.isArray(res.values) && res.values.length > 0) {
+              options.scopes = res.values;
+            } else {
+              throw new Error("Failed to fetch labels from Jira");
+            }
+          }).catch((err) => {
+            console.warn(err);
+            options.scopes = [];
+          }).finally(() => {
+            resolve(options.scopes);
+          });
+
+        } else {
+          // No credentials, resolve to.. nothing?
+          resolve([]);
+        }
+      } else {
+        // Scopes already present, return the filtered version of them
+        resolve(fuzzy.filter(searchInput || '', options.scopes).map((scope) => scope.original));
+      }
+    });
+  }
 
   return {
     // When a user runs `git cz`, prompter will
@@ -68,6 +111,7 @@ module.exports = function(options) {
     // template and will keep empty lines.
     prompter: function(cz, commit, testMode) {
       cz.registerPrompt('limitedInput', LimitedInputPrompt);
+      cz.registerPrompt('autocomplete', autocomplete);
 
       // Let's ask some questions of the user
       // so that we can populate our commit
@@ -106,16 +150,14 @@ module.exports = function(options) {
           }
         },
         {
-          type: hasScopes ? 'list' : 'input',
+          type: 'autocomplete',
           name: 'scope',
           when: !options.skipScope,
-          choices: hasScopes ? options.scopes : undefined,
-          message:
-            'What is the scope of this change (e.g. component or file name): ' +
-            (hasScopes ? '(select from the list)' : '(press enter to skip)'),
+          source: searchScopes,
+          message: 'What is the scope of this change (e.g. component or file name): (select from the list)',
           default: options.defaultScope,
           filter: function(value) {
-            return value.trim().toLowerCase();
+            return value.trim().toUpperCase();
           }
         },
         {
@@ -172,7 +214,6 @@ module.exports = function(options) {
             return answers.isBreaking;
           }
         },
-
         {
           type: 'confirm',
           name: 'isIssueAffected',
