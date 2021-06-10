@@ -38,6 +38,9 @@ Like commitizen, you can specify the configuration of cz-conventional-changelog-
 | Environment variable | package.json   | Default   | Description                                                                                                                                                           |
 | -------------------- | -------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | CZ_JIRA_MODE         | jiraMode       | true      | If this is set to true, CZ will ask for a Jira issue and put it in the commit head. If set to false CZ will ask for the issue in the end, and can be used for GitHub. |
+| CZ_JIRA_HOST         | jiraHost       | undefined | The hostname of the Jira instance to use when fetching labels and ticket IDs. |
+| CZ_JIRA_USER         | jiraUser       | undefined | The email address of the Jira user to authenticate with when fetching labels and ticket IDs. |
+| CZ_JIRA_TOKEN        | jiraToken      | undefined | A Jira API token to authenticate with when fetching labels and ticket IDs. |
 | CZ_MAX_HEADER_WIDTH  | maxHeaderWidth | 72        | This limits how long a commit message head can be. |
 | CZ_MIN_HEADER_WIDTH  | minHeaderWidth | 2         | This limits how short a commit message can be. |
 | CZ_MAX_LINE_WIDTH    | maxLineWidth   | 100       | Commit message bodies are automatically wrapped. This decides how long the lines will be. |
@@ -90,9 +93,13 @@ This example would:
 * Limit the scope selection to either `myScope` or `myScope2`
 
 List of all supported configurable options when using the _configurable_ approach:
+
 | Key            | Default   | Description                                                                                                                                                           |
 | -------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | jiraMode       | true      | If this is set to true, CZ will ask for a Jira issue and put it in the commit head. If set to false CZ will ask for the issue in the end, and can be used for GitHub. |
+| jiraHost       | undefined | The hostname of the Jira instance to use when fetching labels and ticket IDs. |
+| jiraUser       | undefined | The email address of the Jira user to authenticate with when fetching labels and ticket IDs. |
+| jiraToken      | undefined | A Jira API token to authenticate with when fetching labels and ticket IDs. |
 | maxHeaderWidth | 72        | This limits how long a commit message head can be. |
 | minHeaderWidth | 2         | This limits how short a commit message can be. |
 | maxLineWidth   | 100       | Commit message bodies are automatically wrapped. This decides how long the lines will be. |
