@@ -2,12 +2,20 @@
     "name": "@dgc-org/cz-conventional-changelog-for-jira",
     "version": "0.0.0-semantically-released",
     "description": "Commitizen adapter following the conventional-changelog format and also asking for JIRA issue.",
-    "main": "index.js",
+    "main": "src/index.js",
+    "files": [
+        "src/index.js",
+        "src/commit-types.js",
+        "src/configurable.js",
+        "src/defaults.js",
+        "src/engine.js",
+        "src/LimitedInputPrompt.js"
+    ],
     "scripts": {
         "commit": "git-cz",
-        "format": "prettier --write *.{js,json}",
+        "format": "prettier --write **/*.{js,json}",
         "postinstall": "husky install",
-        "test": "mocha *.test.js"
+        "test": "mocha **/*.test.js"
     },
     "homepage": "https://github.com/cyberscan/cz-conventional-changelog-for-jira",
     "repository": {
@@ -23,6 +31,7 @@
     "author": "Marcus Johansson <polarn@gmail.com>",
     "license": "MIT",
     "dependencies": {
+        "@commitlint/config-angular-type-enum": "^12.1.4",
         "boxen": "^5.0.0",
         "chalk": "^2.4.1",
         "commitizen": "^4.2.4",
@@ -50,7 +59,7 @@
     },
     "config": {
         "commitizen": {
-            "path": "./index.js",
+            "path": "./src/index.js",
             "jiraMode": true,
             "skipScope": false
         }
