@@ -15,6 +15,8 @@
         "commit": "git-cz",
         "format": "prettier --write **/*.{js,json}",
         "postinstall": "husky install",
+        "prepublishOnly": "pinst --disable",
+        "postpublish": "pinst --enable",
         "test": "mocha **/*.test.js"
     },
     "homepage": "https://github.com/cyberscan/cz-conventional-changelog-for-jira",
@@ -54,6 +56,7 @@
         "husky": "^6.0.0",
         "mocha": "^6.2.0",
         "mock-require": "^3.0.3",
+        "pinst": "^2.1.6",
         "prettier": "^1.15.3",
         "semver": "^6.2.0"
     },
@@ -69,6 +72,7 @@
             "@dgc-org/commitlint-config-conventional-changelog-for-jira"
         ]
     },
+    "private": false,
     "publishConfig": {
         "access": "public",
         "scope": "@dgc-org"
