@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+source "$(dirname "$0")/_/husky.sh"
+
+if [ "$COMMITIZEN_DISABLE" = "1" ] || [ "${COMMITIZEN_DISABLE,,}" = "true" ]; then
+  exit 0
+else
+  npx commitlint --edit "$1"
+fi

@@ -1,64 +1,74 @@
 {
-  "name": "@dgc-org/cz-conventional-changelog-for-jira",
-  "version": "0.0.0-semantically-released",
-  "description": "Commitizen adapter following the conventional-changelog format and also asking for JIRA issue.",
-  "main": "index.js",
-  "scripts": {
-    "commit": "git-cz",
-    "test": "mocha *.test.js",
-    "format": "prettier --write *.js",
-    "semantic-release": "semantic-release"
-  },
-  "homepage": "https://github.com/cyberscan/cz-conventional-changelog-for-jira",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/cyberscan/cz-conventional-changelog-for-jira.git"
-  },
-  "keywords": [
-    "conventional-changelog",
-    "commitizen",
-    "angular",
-    "jira"
-  ],
-  "author": "Marcus Johansson <polarn@gmail.com>",
-  "license": "MIT",
-  "dependencies": {
-    "boxen": "^5.0.0",
-    "chalk": "^2.4.1",
-    "commitizen": "^4.2.4",
-    "fuzzy": "^0.1.3",
-    "git-branch": "^2.0.1",
-    "inquirer-autocomplete-prompt": "^1.3.0",
-    "jira-client": "^6.21.1",
-    "lodash.map": "^4.5.1",
-    "longest": "^2.0.1",
-    "right-pad": "^1.0.1",
-    "word-wrap": "^1.0.3"
-  },
-  "devDependencies": {
-    "@types/chai": "^4.1.7",
-    "@types/mocha": "^5.2.7",
-    "chai": "^4.2.0",
-    "cosmiconfig": "^5.2.1",
-    "cz-conventional-changelog": "^3.1.0",
-    "mocha": "^6.2.0",
-    "mock-require": "^3.0.3",
-    "prettier": "^1.15.3",
-    "semantic-release": "^17.4.3",
-    "semver": "^6.2.0"
-  },
-  "optionalDependencies": {
-    "@commitlint/load": ">6.1.1"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./index.js",
-      "jiraMode": true,
-      "skipScope": false
+    "name": "@dgc-org/cz-conventional-changelog-for-jira",
+    "version": "0.0.0-semantically-released",
+    "description": "Commitizen adapter following the conventional-changelog format and also asking for JIRA issue.",
+    "main": "index.js",
+    "scripts": {
+        "commit": "git-cz",
+        "format": "prettier --write *.{js,json}",
+        "postinstall": "husky install",
+        "test": "mocha *.test.js"
+    },
+    "homepage": "https://github.com/cyberscan/cz-conventional-changelog-for-jira",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cyberscan/cz-conventional-changelog-for-jira.git"
+    },
+    "keywords": [
+        "conventional-changelog",
+        "commitizen",
+        "angular",
+        "jira"
+    ],
+    "author": "Marcus Johansson <polarn@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+        "boxen": "^5.0.0",
+        "chalk": "^2.4.1",
+        "commitizen": "^4.2.4",
+        "fuzzy": "^0.1.3",
+        "git-branch": "^2.0.1",
+        "inquirer-autocomplete-prompt": "^1.3.0",
+        "jira-client": "^6.21.1",
+        "lodash.map": "^4.5.1",
+        "longest": "^2.0.1",
+        "right-pad": "^1.0.1",
+        "word-wrap": "^1.0.3"
+    },
+    "devDependencies": {
+        "@dgc-org/commitlint-config-conventional-changelog-for-jira": "^1.2.2",
+        "@types/chai": "^4.1.7",
+        "@types/mocha": "^5.2.7",
+        "chai": "^4.2.0",
+        "cosmiconfig": "^5.2.1",
+        "cz-conventional-changelog": "^3.1.0",
+        "husky": "^6.0.0",
+        "mocha": "^6.2.0",
+        "mock-require": "^3.0.3",
+        "prettier": "^1.15.3",
+        "semver": "^6.2.0"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./index.js",
+            "jiraMode": true,
+            "skipScope": false
+        }
+    },
+    "commitlint": {
+        "extends": [
+            "@dgc-org/commitlint-config-conventional-changelog-for-jira"
+        ]
+    },
+    "publishConfig": {
+        "access": "public",
+        "scope": "@dgc-org"
+    },
+    "prettier": {
+        "printWidth": 80,
+        "endOfLine": "lf",
+        "singleQuote": false,
+        "tabWidth": 4,
+        "semi": true
     }
-  },
-  "publishConfig": {
-    "access": "public",
-    "scope": "@dgc-org"
-  }
 }
