@@ -1,7 +1,7 @@
-const conventionalCommitTypes = require("./commit-types");
+const types = require("@dgc-org/commitlint-config-conventional-changelog-for-jira/src/types");
 
 module.exports = {
-    types: conventionalCommitTypes,
+    types: types,
     jiraMode: true,
     skipScope: false,
     maxHeaderWidth: 72,

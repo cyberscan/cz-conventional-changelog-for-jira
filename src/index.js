@@ -1,7 +1,7 @@
 "format cjs";
 
 const engine = require("./engine");
-const conventionalCommitTypes = require("./commit-types");
+const types = require("@dgc-org/commitlint-config-conventional-changelog-for-jira/src/types");
 const defaults = require("./defaults");
 const configLoader = require("commitizen").configLoader;
 
@@ -17,7 +17,7 @@ function getEnvOrConfig(env, configVar, defaultValue) {
 }
 
 const options = {
-    types: conventionalCommitTypes,
+    types: types,
     scopes: config.scopes,
     jiraMode: getEnvOrConfig(
         process.env.CZ_JIRA_MODE,

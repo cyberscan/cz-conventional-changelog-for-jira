@@ -2,7 +2,7 @@ const chai = require("chai");
 const engine = require("./engine");
 const mock = require("mock-require");
 const semver = require("semver");
-const types = require("./commit-types");
+const types = require("@dgc-org/commitlint-config-conventional-changelog-for-jira/src/types");
 const defaults = require("./defaults");
 
 var expect = chai.expect;

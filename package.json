@@ -5,7 +5,6 @@
     "main": "src/index.js",
     "files": [
         "src/index.js",
-        "src/commit-types.js",
         "src/configurable.js",
         "src/defaults.js",
         "src/engine.js",
@@ -33,7 +32,7 @@
     "author": "Marcus Johansson <polarn@gmail.com>",
     "license": "MIT",
     "dependencies": {
-        "@commitlint/config-angular-type-enum": "^12.1.4",
+        "@dgc-org/commitlint-config-conventional-changelog-for-jira": "^1.2.2",
         "boxen": "^5.0.0",
         "chalk": "^2.4.1",
         "commitizen": "^4.2.4",
@@ -47,18 +46,16 @@
         "word-wrap": "^1.0.3"
     },
     "devDependencies": {
-        "@dgc-org/commitlint-config-conventional-changelog-for-jira": "^1.2.2",
         "@types/chai": "^4.1.7",
         "@types/mocha": "^5.2.7",
         "chai": "^4.2.0",
+        "commitlint": "^15.0.0",
         "cosmiconfig": "^5.2.1",
-        "cz-conventional-changelog": "^3.1.0",
         "husky": "^6.0.0",
         "mocha": "^6.2.0",
         "mock-require": "^3.0.3",
         "pinst": "^2.1.6",
-        "prettier": "^1.15.3",
-        "semver": "^6.2.0"
+        "prettier": "^1.15.3"
     },
     "config": {
         "commitizen": {
